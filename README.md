@@ -11,6 +11,7 @@ Phân loại video đặt ra thách thức lớn do dữ liệu chứa chiều t
 ![Hình 1: Minh hoạ bài toán.](img/h1.png)
 
 ![Vấn đề không gian và thời gian trong bài toán phân loại video.](img/h0.png)
+
 LS-ViT giải quyết vấn đề này bằng cách tích hợp hai module chuyên biệt:
 
 1. **SMIF (Spatial-Motion Interaction Fusion):** Nắm bắt chuyển động ngắn hạn (short-term motion).
@@ -24,8 +25,7 @@ LS-ViT giải quyết vấn đề này bằng cách tích hợp hai module chuy�
 
 Dự án sử dụng bộ dữ liệu **HMDB51**, bao gồm 51 lớp hành động khác nhau (như cười, nhai, đấu kiếm, v.v.) được thu thập từ phim ảnh và video công cộng.
 
-* 
-**Đặc điểm:** Dữ liệu có sự đa dạng lớn về góc quay và điều kiện ánh sáng, đồng thời bị mất cân bằng (imbalance) số lượng video giữa các lớp.
+* **Đặc điểm:** Dữ liệu có sự đa dạng lớn về góc quay và điều kiện ánh sáng, đồng thời bị mất cân bằng (imbalance) số lượng video giữa các lớp.
 
 
 * **Phân tích dữ liệu (EDA):** Các chỉ số về độ sáng, độ tương phản và phân bố frame được phân tích kỹ lưỡng trước khi huấn luyện.
@@ -55,12 +55,10 @@ Module này tính toán sự sai biệt (difference) giữa khung hình hiện t
 
 ### 3. Các kỹ thuật khác
 
-* 
-**Patch Embedding:** Chuyển đổi video thành chuỗi vector tokens.
+* **Patch Embedding:** Chuyển đổi video thành chuỗi vector tokens.
 
 
-* 
-**DropPath (Stochastic Depth):** Kỹ thuật regularization ngắt ngẫu nhiên các luồng dữ liệu để giảm overfitting.
+* **DropPath (Stochastic Depth):** Kỹ thuật regularization ngắt ngẫu nhiên các luồng dữ liệu để giảm overfitting.
 
 
 ## Cài đặt (Installation)
@@ -71,7 +69,6 @@ git clone https://github.com/pahmlam/action_recognition.git
 cd action_recognition
 
 ```
-
 
 2. **Cài đặt thư viện:**
 ```bash
@@ -87,16 +84,11 @@ Lưu ý: Dự án khuyến nghị sử dụng `torchcodec` để tăng tốc đ�
 
 Dữ liệu được xử lý thông qua `HMDB51Dataset` với các kỹ thuật:
 
-* 
-**Uniform Sampling:** Lấy mẫu frame cách đều nhau.
+* **Uniform Sampling:** Lấy mẫu frame cách đều nhau.
 
+* **Temporal Padding:** Lặp lại frame cuối nếu video quá ngắn.
 
-* 
-**Temporal Padding:** Lặp lại frame cuối nếu video quá ngắn.
-
-
-* 
-**Augmentation:** Random Crop, Horizontal Flip, Color Jitter .
+* **Augmentation:** Random Crop, Horizontal Flip, Color Jitter .
 
 ### 2. Chạy huấn luyện
 
